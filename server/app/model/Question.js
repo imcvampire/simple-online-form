@@ -16,7 +16,7 @@ const questionSchema = new mongoose.Schema({
     required: true,
   },
 }, {
-  discriminatorKey: 'kind'
+  discriminatorKey: 'kind',
 })
 
 const Question = mongoose.model('Question', questionSchema)
