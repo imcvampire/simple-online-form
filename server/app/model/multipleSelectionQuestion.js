@@ -16,6 +16,6 @@ const multipleSelectionQuestionSchema = new mongoose.Schema({
   },
 })
 
-const multipleSelectionQuestion = mongoose.model('multipleSelectionQuestion', multipleSelectionQuestion)
+const multipleSelectionQuestion = mongoose.model('multipleSelectionQuestion', multipleSelectionQuestionSchema)
 
 module.exports = multipleSelectionQuestion
