@@ -1,7 +1,7 @@
-const MULTIPLE_CHOICE_QUESTION = 'MultipleChoiceQuestion'
-const MULTIPLE_SELECTION_QUESTION = 'MultipleSelectionQuestion'
+const MultipleChoiceQuestion = 'MultipleChoiceQuestion'
+const MultipleSelectionQuestion = 'MultipleSelectionQuestion'
 
 module.exports = {
-  MULTIPLE_CHOICE_QUESTION,
-  MULTIPLE_SELECTION_QUESTION,
+  MultipleChoiceQuestion,
+  MultipleSelectionQuestion,
 }

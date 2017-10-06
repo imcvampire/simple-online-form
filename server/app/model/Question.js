@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 
 const {
-  MULTIPLE_CHOICE_QUESTION,
-  MULTIPLE_SELECTION_QUESTION,
+  MultipleChoiceQuestion,
+  MultipleSelectionQuestion,
 } = require('../utils/constants')
 
 const questionSchema = new mongoose.Schema({
@@ -22,7 +22,7 @@ const questionSchema = new mongoose.Schema({
 const Question = mongoose.model('Question', questionSchema)
 
 const MultipleChoiceQuestion = Question.discriminator( // eslint-disable-line no-unused-vars
-  MULTIPLE_CHOICE_QUESTION,
+  MultipleChoiceQuestion,
   new mongoose.Schema({
     answer: {
       type: Number,
@@ -32,7 +32,7 @@ const MultipleChoiceQuestion = Question.discriminator( // eslint-disable-line no
 )
 
 const MultipleSelectionQuestion = Question.discriminator( // eslint-disable-line no-unused-vars
-  MULTIPLE_SELECTION_QUESTION,
+  MultipleSelectionQuestion,
   new mongoose.Schema({
     answer: {
       type: [Number],
