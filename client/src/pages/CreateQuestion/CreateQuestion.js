@@ -95,7 +95,7 @@ class CreateQuestion extends React.Component {
       if (value) {
         correctAnswers.push(index)
       } else {
-        correctAnswers.slice(correctAnswers.indexOf(index), 1)
+        correctAnswers.splice(correctAnswers.indexOf(index), 1)
       }
 
       return {
