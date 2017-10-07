@@ -12,6 +12,7 @@ const CreateAnswerList = ({
         <TextField
           name={`answer${index}`}
           value={answer}
+          placeholder={`Option ${index + 1}`}
           fullWidth={true}
           style={{ height: '40px' }}
           onChange={handleChangeAnswer(index)}
