@@ -4,6 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import Navbar from './components/Navbar'
 import CreateQuestion from './pages/CreateQuestion'
+import AnswerQuestion from './pages/AnswerQuestion'
 
 const App = () => (
   <BrowserRouter>
@@ -20,6 +21,7 @@ const App = () => (
           <Route
             exact
             path="/answer"
+            component={AnswerQuestion}
           />
 
           <Redirect to="/create" />

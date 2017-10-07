@@ -200,6 +200,7 @@ class CreateQuestion extends React.Component {
             />
             : <SelectAnswerCheckbox
               {...this.state}
+              selected={this.state.correctAnswers}
               handleCheckboxAnswer={this.handleCheckboxAnswer}
             />
         }
