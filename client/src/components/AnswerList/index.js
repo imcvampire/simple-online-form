@@ -1,3 +1,7 @@
-import AnswerList from './AnswerList'
+import CreateAnswerList from './CreateAnswerList'
 
-export default AnswerList
+export { CreateAnswerList }
+
+// export default {
+//   CreateAnswerList,
+// }
