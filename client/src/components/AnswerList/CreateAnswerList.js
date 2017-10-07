@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { TextField } from 'material-ui'
 
-const AnswerList = ({
+const CreateAnswerList = ({
   answers,
   handleChangeAnswer,
 }) => (
@@ -22,9 +22,9 @@ const AnswerList = ({
   </div>
 )
 
-AnswerList.propTypes = {
+CreateAnswerList.propTypes = {
   answers: PropTypes.array.isRequired,
   handleChangeAnswer: PropTypes.func.isRequired,
 }
 
-export default AnswerList
+export default CreateAnswerList

@@ -8,7 +8,7 @@ const SelectAnswerCheckbox = ({
   handleCheckboxAnswer,
 }) => (
   <div>
-    <p>Correct answers:</p>
+    <p>Select correct answers:</p>
     {
       answers.map((answer, index) => (
         <Checkbox

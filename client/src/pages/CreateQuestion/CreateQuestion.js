@@ -12,8 +12,11 @@ import {
 } from 'material-ui'
 import axios from 'axios'
 
-import AnswerList from '../../components/AnswerList'
-import SelectAnswer from '../../components/SelectAnswer'
+import { CreateAnswerList } from '../../components/AnswerList'
+import {
+  SelectAnswerRadio,
+  SelectAnswerCheckbox,
+} from '../../components/SelectAnswer'
 
 import {
   MultipleChoiceQuestion,
@@ -177,7 +180,7 @@ class CreateQuestion extends React.Component {
           onChange={this.handleChangeText('subtitle')}
         />
 
-        <AnswerList
+        <CreateAnswerList
           {...this.state}
           handleChangeAnswer={this.handleChangeAnswer}
         />
@@ -191,11 +194,11 @@ class CreateQuestion extends React.Component {
 
         {
           this.state.kind === MultipleChoiceQuestion
-            ? <SelectAnswer.SelectAnswerRadio
+            ? <SelectAnswerRadio
               {...this.state}
               handleRadioButtonGroupAnswer={this.handleRadioButtonGroupAnswer}
             />
-            : <SelectAnswer.SelectAnswerCheckbox
+            : <SelectAnswerCheckbox
               {...this.state}
               handleCheckboxAnswer={this.handleCheckboxAnswer}
             />
