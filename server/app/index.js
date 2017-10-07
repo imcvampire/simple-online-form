@@ -7,7 +7,7 @@ const app = express()
 
 app.use(bodyParser.json())
 
-app.get('/api/questions', (req, res) = {
+app.get('/api/questions', (req, res) => {
   Question.getAllQuestion((error, questions) => {
     if (error) res.status(500).end()
 
