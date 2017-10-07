@@ -10,7 +10,7 @@ const SelectAnswerRadio = ({
   handleRadioButtonGroupAnswer,
 }) => (
   <div>
-    <p>Correct answer:</p>
+    <p>Select correct answer:</p>
     <RadioButtonGroup
       name="radio-button-correct-answer"
       onChange={handleRadioButtonGroupAnswer}
