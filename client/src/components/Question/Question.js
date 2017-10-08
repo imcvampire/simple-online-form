@@ -1,5 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {
+  Paper,
+} from 'material-ui'
 
 import {
   SelectAnswerRadio,
@@ -26,7 +29,7 @@ class Question extends React.Component {
 
   render() {
     return (
-      <div>
+      <Paper style={{ padding: '20px' }}>
         <h2>{this.props.title}</h2>
         <h3>{this.props.subtitle}</h3>
 
@@ -42,7 +45,7 @@ class Question extends React.Component {
               handleCheckboxAnswer={this.handleCheckboxAnswer}
             />
         }
-      </div>
+      </Paper>
     )
   }
 }
@@ -52,7 +55,7 @@ Question.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
   answers: PropTypes.array.isRequired,
-  selected: PropTypes.any.isRequired,
+  selected: PropTypes.any,
   updateSelectedAnswer: PropTypes.func.isRequired,
 }
 

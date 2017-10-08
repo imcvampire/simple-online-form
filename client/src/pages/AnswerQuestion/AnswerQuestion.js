@@ -30,16 +30,13 @@ class AnswerQuestion extends React.Component {
     }
   })
 
-  componentWillMount() {
-    axios.get('/api/questions', ({
-      data,
-    }) => {
-      console.log(data)
+  componentDidMount() {
+    axios.get('/api/questions').then(({ data }) => {
       this.setState((state) => ({
         ...state,
         questionList: data.map((question) => ({
           ...question,
-          selectedAnswer: question.kind === MultipleChoiceQuestion ? null : []
+          selected: question.kind === MultipleChoiceQuestion ? null : []
         }))
       }))
     })
@@ -53,6 +50,7 @@ class AnswerQuestion extends React.Component {
           this.state.questionList.map((value, index) => (
             <Question
               {...value}
+              key={value._id}
               updateSelectedAnswer={this.updateSelectedAnswer(index)}
             />
           ))
