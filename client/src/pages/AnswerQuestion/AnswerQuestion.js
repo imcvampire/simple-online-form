@@ -22,18 +22,7 @@ class AnswerQuestion extends React.Component {
       isSubmitting: false,
     }
   }
-
-  updateSelectedAnswer = index => value => this.setState((state) => {
-    const questionList = state.questionList.slice()
-    questionList[index].selected = value
-    questionList[index].isWrong = false
-
-    return {
-      ...state,
-      questionList,
-    }
-  })
-
+  
   componentDidMount() {
     axios.get('/api/questions').then(({ data }) => {
       this.setState((state) => ({
@@ -46,6 +35,17 @@ class AnswerQuestion extends React.Component {
       }))
     })
   }
+
+  updateSelectedAnswer = index => value => this.setState((state) => {
+    const questionList = state.questionList.slice()
+    questionList[index].selected = value
+    questionList[index].isWrong = false
+
+    return {
+      ...state,
+      questionList,
+    }
+  })
 
   submit = () => {
     this.state.questionList.forEach((question) => {
