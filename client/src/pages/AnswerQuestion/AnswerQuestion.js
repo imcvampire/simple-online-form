@@ -47,7 +47,7 @@ class AnswerQuestion extends React.Component {
   }
 
   submit = () => {
-    this.questionList.forEach((question) => {
+    this.state.questionList.forEach((question) => {
       if (question.kind === MultipleChoiceQuestion) {
         if (question.selected !== question.correctAnswers) question.isWrong = true
       } else if (question.kind === MultipleSelectionQuestion) {
@@ -55,7 +55,7 @@ class AnswerQuestion extends React.Component {
       }
     })
 
-    if (this.questionList.some(({ isWrong }) => isWrong)) return
+    if (this.state.questionList.some(({ isWrong }) => isWrong)) return
 
     alert('Your answer is correct!')
   }
