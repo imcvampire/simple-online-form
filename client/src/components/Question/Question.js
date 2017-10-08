@@ -16,7 +16,7 @@ class Question extends React.Component {
   handleRadioButtonGroupAnswer = (event, value) => this.props.updateSelectedAnswer(value)
 
   handleCheckboxAnswer = index => (event, value) => {
-    const selected = this.selected.slice()
+    const selected = this.props.selected.slice()
 
     if (value) {
       selected.push(index)
