@@ -21,7 +21,7 @@ app.use(bodyParser.json())
 app.disable('etag')
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('../build'))
+  app.use(express.static(__dirname + '../build'))
 }
 
 app.get('/api/questions', (req, res) => {
