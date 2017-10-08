@@ -45,6 +45,15 @@ class Question extends React.Component {
               handleCheckboxAnswer={this.handleCheckboxAnswer}
             />
         }
+
+        {
+          this.props.isWrong && (
+            <p>
+              Your answer is incorrect. Please try again!
+            </p>
+          )
+        }
+
       </Paper>
     )
   }
@@ -56,6 +65,7 @@ Question.propTypes = {
   subtitle: PropTypes.string.isRequired,
   answers: PropTypes.array.isRequired,
   selected: PropTypes.any,
+  isWrong: PropTypes.bool.isRequired,
   updateSelectedAnswer: PropTypes.func.isRequired,
 }
 
