@@ -138,9 +138,9 @@ class CreateQuestion extends React.Component {
           },
 
           isSubmitting: false,
-        }, () => {
-          alert('Error! Please try again!')
         })
+      }, () => {
+        alert('Error! Please try again!')
       })
     })
 
