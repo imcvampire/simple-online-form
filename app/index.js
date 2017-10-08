@@ -1,6 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const connectHistoryApiFallback = require('connect-history-api-fallback')
+const path = require('path')
 
 const Question = require('./model/Question.js')
 
@@ -19,10 +21,6 @@ mongoose.connect(
 
 app.use(bodyParser.json())
 app.disable('etag')
-
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(__dirname + '../build'))
-}
 
 app.get('/api/questions', (req, res) => {
   Question.getAllQuestions((error, questions) => {
