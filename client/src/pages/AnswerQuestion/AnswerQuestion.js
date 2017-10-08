@@ -22,7 +22,7 @@ class AnswerQuestion extends React.Component {
       isSubmitting: false,
     }
   }
-  
+
   componentDidMount() {
     axios.get('/api/questions').then(({ data }) => {
       this.setState((state) => ({
@@ -47,6 +47,8 @@ class AnswerQuestion extends React.Component {
     }
   })
 
+  hasWrongAnswer = () => this.state.questionList.some(({ isWrong }) => isWrong)
+
   submit = () => {
     this.state.questionList.forEach((question) => {
       if (question.kind === MultipleChoiceQuestion) {
@@ -56,7 +58,7 @@ class AnswerQuestion extends React.Component {
       }
     })
 
-    if (this.state.questionList.some(({ isWrong }) => isWrong)) return
+    if (this.hasWrongAnswer()) return
 
     alert('Your answer is correct!')
   }
