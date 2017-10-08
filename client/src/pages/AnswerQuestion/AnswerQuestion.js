@@ -2,8 +2,12 @@ import React from 'react'
 import {
   Container,
 } from 'react-grid-system'
+import axios from 'axios'
 
 import Question from '../../components/Question'
+import {
+  MultipleChoiceQuestion
+} from '../../utils/constant'
 
 
 class AnswerQuestion extends React.Component {
@@ -25,6 +29,20 @@ class AnswerQuestion extends React.Component {
       questionList,
     }
   })
+
+  componentWillMount() {
+    axios.get('/api/questions', ({
+      data,
+    }) => {
+      this.setState((state) => ({
+        ...state,
+        questionList: data.map((question) => ({
+          ...question,
+          selectedAnswer: question.kind === MultipleChoiceQuestion ? null : []
+        }))
+      }))
+    })
+  }
 
 
   render() {
