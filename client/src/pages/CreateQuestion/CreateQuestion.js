@@ -115,7 +115,7 @@ class CreateQuestion extends React.Component {
       ...state,
       isSubmitting: true,
     }), () => {
-      axios.post('/questions', {
+      axios.post('/api/questions', {
         title: this.state.title,
         subtitle: this.state.subtitle,
         answers: this.state.answers,
