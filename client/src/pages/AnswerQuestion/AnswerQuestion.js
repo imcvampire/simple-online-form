@@ -34,6 +34,7 @@ class AnswerQuestion extends React.Component {
     axios.get('/api/questions', ({
       data,
     }) => {
+      console.log(data)
       this.setState((state) => ({
         ...state,
         questionList: data.map((question) => ({

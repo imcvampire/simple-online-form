@@ -18,6 +18,7 @@ mongoose.connect(
 )
 
 app.use(bodyParser.json())
+app.disable('etag')
 
 app.get('/api/questions', (req, res) => {
   Question.getAllQuestions((error, questions) => {
