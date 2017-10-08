@@ -2,11 +2,14 @@ import React from 'react'
 import {
   Container,
 } from 'react-grid-system'
+import { RaisedButton } from 'material-ui'
 import axios from 'axios'
+import isEqual from 'lodash.isequal'
 
 import Question from '../../components/Question'
 import {
-  MultipleChoiceQuestion
+  MultipleChoiceQuestion,
+  MultipleSelectionQuestion,
 } from '../../utils/constant'
 
 
@@ -36,12 +39,26 @@ class AnswerQuestion extends React.Component {
         ...state,
         questionList: data.map((question) => ({
           ...question,
-          selected: question.kind === MultipleChoiceQuestion ? null : []
+          selected: question.kind === MultipleChoiceQuestion ? null : [],
+          isWrong: false,
         }))
       }))
     })
   }
 
+  submit = () => {
+    this.questionList.forEach((question) => {
+      if (question.kind === MultipleChoiceQuestion) {
+        if (question.selected !== question.correctAnswers) question.isWrong = true
+      } else if (question.kind === MultipleSelectionQuestion) {
+        if (!isEqual(question.correctAnswers.sort(), question.selected.sort())) question.isWrong = true
+      }
+    })
+
+    if (this.questionList.some(({ isWrong }) => isWrong)) return
+
+    alert('Your answer is correct!')
+  }
 
   render() {
     return (
@@ -55,6 +72,14 @@ class AnswerQuestion extends React.Component {
             />
           ))
         }
+
+        <RaisedButton
+          label="Submit"
+          fullWidth={true}
+          primary={true}
+          disabled={this.state.isSubmitting}
+          onClick={this.submit}
+        />
       </Container>
     )
   }
