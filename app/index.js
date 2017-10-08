@@ -1,10 +1,12 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-const connectHistoryApiFallback = require('connect-history-api-fallback')
+const expressHistoryApiFallback = require('express-history-api-fallback')
 const path = require('path')
 
 const Question = require('./model/Question.js')
+
+const root = path.resolve(__dirname, '../build')
 
 const app = express()
 
@@ -37,5 +39,8 @@ app.post('/api/questions', (req, res) => {
     res.status(204).end()
   })
 })
+
+app.use(express.static(root))
+app.use(expressHistoryApiFallback('index.html', { root }))
 
 module.exports = app
