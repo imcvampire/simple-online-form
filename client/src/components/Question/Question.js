@@ -24,7 +24,7 @@ class Question extends React.Component {
       selected.splice(selected.indexOf(index), 1)
     }
 
-    this.props.updateSelectedAnswer(value)
+    this.props.updateSelectedAnswer(selected)
   }
 
   render() {
