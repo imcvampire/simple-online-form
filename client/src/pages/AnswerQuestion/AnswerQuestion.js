@@ -61,6 +61,11 @@ class AnswerQuestion extends React.Component {
     if (this.hasWrongAnswer()) return
 
     alert('Your answer is correct!')
+
+    this.setState((state) => ({
+      ...state,
+      isSubmitting: false,
+    }))
   }
 
   render() {
@@ -80,7 +85,7 @@ class AnswerQuestion extends React.Component {
           label="Submit"
           fullWidth={true}
           primary={true}
-          disabled={this.state.isSubmitting}
+          disabled={this.state.isSubmitting || this.hasWrongAnswer()}
           onClick={this.submit}
         />
       </Container>
