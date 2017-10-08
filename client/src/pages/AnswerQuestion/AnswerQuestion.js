@@ -50,22 +50,33 @@ class AnswerQuestion extends React.Component {
   hasWrongAnswer = () => this.state.questionList.some(({ isWrong }) => isWrong)
 
   submit = () => {
-    this.state.questionList.forEach((question) => {
-      if (question.kind === MultipleChoiceQuestion) {
-        if (question.selected !== question.correctAnswers) question.isWrong = true
-      } else if (question.kind === MultipleSelectionQuestion) {
-        if (!isEqual(question.correctAnswers.sort(), question.selected.sort())) question.isWrong = true
-      }
-    })
-
-    if (this.hasWrongAnswer()) return
-
-    alert('Your answer is correct!')
-
     this.setState((state) => ({
       ...state,
-      isSubmitting: false,
-    }))
+      questionList: state.questionList.map((question) => {
+        let isWrong = false
+
+        if (question.kind === MultipleChoiceQuestion) {
+          if (question.selected !== question.correctAnswers) isWrong = true
+        } else if (question.kind === MultipleSelectionQuestion) {
+          if (!isEqual(question.correctAnswers.sort(), question.selected.sort())) isWrong = true
+        }
+
+        return {
+          ...question,
+          isWrong,
+        }
+      })
+    }), () => {
+      if (this.hasWrongAnswer()) return
+
+      alert('Your answer is correct!')
+
+      this.setState((state) => ({
+        ...state,
+        isSubmitting: false,
+      }))
+    })
+
   }
 
   render() {
