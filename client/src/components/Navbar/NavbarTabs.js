@@ -9,15 +9,17 @@ const styles = {
 }
 
 const NavbarTabs = () => (
-  <Tabs style={styles.tabs}>
+  <Tabs style={styles.tabs} value={window.location.pathname}>
     <Tab
       label="Create"
       data-route="/create"
+      value="/create"
       containerElement={<Link to="/create" />}
     />
     <Tab
       label="Answer"
       data-route="/answer"
+      value="/answer"
       containerElement={<Link to="/answer" />}
     />
   </Tabs>

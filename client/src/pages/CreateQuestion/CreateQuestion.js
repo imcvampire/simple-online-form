@@ -115,7 +115,7 @@ class CreateQuestion extends React.Component {
       ...state,
       isSubmitting: true,
     }), () => {
-      axios.post('/questions', {
+      axios.post('/api/questions', {
         title: this.state.title,
         subtitle: this.state.subtitle,
         answers: this.state.answers,
@@ -138,9 +138,9 @@ class CreateQuestion extends React.Component {
           },
 
           isSubmitting: false,
-        }, () => {
-          alert('Error! Please try again!')
         })
+      }, () => {
+        alert('Error! Please try again!')
       })
     })
 
@@ -200,6 +200,7 @@ class CreateQuestion extends React.Component {
             />
             : <SelectAnswerCheckbox
               {...this.state}
+              selected={this.state.correctAnswers}
               handleCheckboxAnswer={this.handleCheckboxAnswer}
             />
         }

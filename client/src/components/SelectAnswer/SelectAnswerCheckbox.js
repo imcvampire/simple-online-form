@@ -4,7 +4,7 @@ import { Checkbox } from 'material-ui'
 
 const SelectAnswerCheckbox = ({
   answers,
-  correctAnswers,
+  selected,
   handleCheckboxAnswer,
 }) => (
   <div>
@@ -13,7 +13,7 @@ const SelectAnswerCheckbox = ({
       answers.map((answer, index) => (
         <Checkbox
           label={answer}
-          checked={correctAnswers.includes(index)}
+          checked={selected.includes(index)}
           onCheck={handleCheckboxAnswer(index)}
           key={index}
         />
@@ -24,7 +24,7 @@ const SelectAnswerCheckbox = ({
 
 SelectAnswerCheckbox.propTypes = {
   answers: PropTypes.array.isRequired,
-  correctAnswers: PropTypes.array.isRequired,
+  selected: PropTypes.array.isRequired,
   handleCheckboxAnswer: PropTypes.func,
 }
 
