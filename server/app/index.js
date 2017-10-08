@@ -20,6 +20,10 @@ mongoose.connect(
 app.use(bodyParser.json())
 app.disable('etag')
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('../../client/build'))
+}
+
 app.get('/api/questions', (req, res) => {
   Question.getAllQuestions((error, questions) => {
     if (error) res.status(500).end()
