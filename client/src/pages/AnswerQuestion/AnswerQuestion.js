@@ -26,6 +26,7 @@ class AnswerQuestion extends React.Component {
   updateSelectedAnswer = index => value => this.setState((state) => {
     const questionList = state.questionList.slice()
     questionList[index].selected = value
+    questionList[index].isWrong = false
 
     return {
       ...state,
